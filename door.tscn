@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=4 uid="uid://c80id8gwsnems"]
+
+[ext_resource type="Script" uid="uid://5kvt3ja2r3te" path="res://Door.cs" id="1_ba8gm"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_hun61"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAACIAAAAUklGRoAAAABXRUJQVlA4THQAAAAvX8ALECcgECD8V8nRoERIQPi/yhwbJCEB4f8qc2yQ5j8AQNWvAlaRJLUCBywO2EICCoJ/Uzm++BPRfwVu2ygZw8E7xJ8gwOT/gESvdaoiSdn1n4TswSR0bwT6Yha6YhZ6iNbHuTjrw05ufvvUlVs79heIAA==")
+size_override = Vector2(96, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hun61"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_ba8gm"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v6xrn"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0phs7"]
+_data = {
+&"Closed": SubResource("Animation_ba8gm"),
+&"Open": SubResource("Animation_v6xrn")
+}
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_ba8gm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_hun61")
+hframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Door.aseprite",
+"source_uid": 8428794383716708755
+}
+metadata/_aseprite_wizard_source_file_hash_ = "906e4cf09555f0e8199ee0d33b180d7a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hun61")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0phs7")
+}
