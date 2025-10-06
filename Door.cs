@@ -4,12 +4,17 @@ using System;
 public partial class Door : Area2D
 {
     private AnimationPlayer _animationPlayer;
+    private float _radius = 0f;
+    private float _raidusMin = 0f;
+    private float _radiusMax = 1000f;
+    private float _radiusDelta = 5f;
+    private bool _screenWipe = false;
 
     public override void _Ready()
     {
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        AreaEntered += _OnAreaEntered;
-        AreaExited += _OnAreaExited;
+        // AreaEntered += _OnAreaEntered;
+        // AreaExited += _OnAreaExited;
     }
 
     public void Open()
@@ -22,13 +27,27 @@ public partial class Door : Area2D
         _animationPlayer.Play("Closed");
     }
 
-    private void _OnAreaEntered(Area2D area)
+    public override void _PhysicsProcess(double delta)
     {
-
+        if (_screenWipe == true && _radius < _radiusMax)
+        {
+            _radius += _radiusDelta;
+            QueueRedraw();
+        }
     }
 
-    private void _OnAreaExited(Area2D area)
+    public void Interact()
     {
-        
+        // Screen wipe starting from door;
+        // Move to next level
+        _screenWipe = true;
+    }
+
+    public override void _Draw()
+    {
+        if (_radius > 0.0f)
+        {
+            DrawCircle(Vector2.Zero, _radius, Colors.Black);
+        }
     }
 }

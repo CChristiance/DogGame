@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://5kvt3ja2r3te" path="res://Door.cs" id="1_ba8gm"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_hun61"]
-_data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAACIAAAAUklGRoAAAABXRUJQVlA4THQAAAAvX8ALECcgECD8V8nRoERIQPi/yhwbJCEB4f8qc2yQ5j8AQNWvAlaRJLUCBywO2EICCoJ/Uzm++BPRfwVu2ygZw8E7xJ8gwOT/gESvdaoiSdn1n4TswSR0bwT6Yha6YhZ6iNbHuTjrw05ufvvUlVs79heIAA==")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ba8gm"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAACWAAAAUklGRo4AAABXRUJQVlA4TIEAAAAvX8ALEDdAFmCyawyRpJX/kQdZgMmuMUSSaWzpEAmQJkl0m0s84/wHANjOFv8lpQKrRrZaERzggGChGWgKrgGSE/yL6K+Xn4j+K2zbtpGTdO9ewX4DSVWJb7ifUmkGkWf3UwJSmCQgYApCipMQCNuHy6k+BM7PF/QVdbmkf/UXiAEA")
 size_override = Vector2(96, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hun61"]
-size = Vector2(8, 8)
+size = Vector2(10, 10)
 
 [sub_resource type="Animation" id="Animation_ba8gm"]
 length = 0.1
@@ -52,7 +52,7 @@ script = ExtResource("1_ba8gm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_hun61")
+texture = SubResource("PortableCompressedTexture2D_ba8gm")
 hframes = 2
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
@@ -75,7 +75,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Assets/Door.aseprite",
 "source_uid": 8428794383716708755
 }
-metadata/_aseprite_wizard_source_file_hash_ = "906e4cf09555f0e8199ee0d33b180d7a"
+metadata/_aseprite_wizard_source_file_hash_ = "c430ce3eeadc9c7566a44e0fefe92fc2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hun61")

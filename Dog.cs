@@ -3,11 +3,18 @@ using System;
 
 public partial class Dog : Player
 {
-    private bool canMove = true;
+    private bool isCarried = false;
+    private bool isOld = true;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        turnOld();
+    }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (canMove)
+        if (!isOld && !isCarried)
         {
             base._PhysicsProcess(delta);
         }
@@ -15,24 +22,25 @@ public partial class Dog : Player
 
     public void pickUp()
     {
-        canMove = false;
+        isCarried = true;
     }
 
     public void setDown(Vector2 dropPoint)
     {
+        _lastPosition = dropPoint;
         _desiredPosition = dropPoint;
-        canMove = true;
+        isCarried = false;
     }
 
     public void turnOld()
     {
         _animationPlayer.Play("idle_old");
-        canMove = false;
+        isOld = true;
     }
 
     public void turnYoung()
     {
         _animationPlayer.Play("idle_side");
-        canMove = true;
+        isOld = false;
     }
 }

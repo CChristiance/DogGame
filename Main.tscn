@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dv04iwgwjxuw4" path="res://Main.cs" id="1_glv2v"]
 
-[node name="Node2D" type="Control" node_paths=PackedStringArray("_button")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_button")]
 layout_direction = 4
 layout_mode = 3
 anchors_preset = 0

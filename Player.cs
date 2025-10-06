@@ -7,7 +7,7 @@ public abstract partial class Player : Area2D
     public int gridSize;
 
     protected Vector2 _desiredPosition;
-    private Vector2 _lastPosition;
+    protected Vector2 _lastPosition;
     private float _t = 0.0f;
     protected Direction direction;
 
@@ -78,7 +78,6 @@ public abstract partial class Player : Area2D
             }
             else
             {
-                GD.Print("Lerping");
                 Position = Position.Lerp(_desiredPosition, _t);
             }
 
