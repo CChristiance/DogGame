@@ -10,7 +10,7 @@ public partial class DualGridTilemap : Node2D
     TileMapLayer worldMapLayer;
     TileMapLayer displayMapLayer;
     public Vector2I grassPlaceholderAtlasCoord = new(0, 0);
-    public Vector2I emptyPlaceholderAtlasCoord = new(1, 1);
+    public Vector2I emptyPlaceholderAtlasCoord = new(1, 0);
     readonly Vector2I[] NEIGHBORS = new Vector2I[] { new(0, 0), new(1, 0), new(0, 1), new(1, 1) };
 
     readonly Dictionary<Tuple<TileType, TileType, TileType, TileType>, Vector2I> neighborsToAtlasCoord = new() {

@@ -1,31 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://bc3mgdiwbmcf6"]
+[gd_scene load_steps=7 format=4 uid="uid://bl3tmow8y1qie"]
 
-[ext_resource type="Script" uid="uid://45tmtpy0qgp" path="res://FloorButton.cs" id="1_r04n3"]
+[ext_resource type="Script" uid="uid://46h6rodbom3u" path="res://FloorButton.cs" id="1_r04n3"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_vxja4"]
-_data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAAC2AAAAUklGRq4AAABXRUJQVlA4TKIAAAAvX8ALEC9AFmAygn39MeSvlQuZtE2v2ph/mINpmRciARIW0Oxu8P8t+/wHYF3Vf1k0BbaRbSt5WAHfcqADzT3X238v6J1PSBLRf7VpGzBOW3OH/MhK8zzkmIGEi1YqC6k0VbUxno8olSVcODt10fIOqovgj+bK9j3Nlc0fuzkpJuLPFeZPY45s1J/LErRoqmpD7O+PjAAwisc/Mh4S/s9/IAE=")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_h0uok"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAACEAAAAUklGRnwAAABXRUJQVlA4THAAAAAvX8ALEC9AFmAygn39MeSvlQuZtE2v2ph/mINpmRciARIW0Oxu8P8t+/wHYF3Vf1k0BUaRbDWicBDvFBYoHGAg+jeTM+xeIvqvoG0bJiawwwL89riIwH4xFDHlQqJfSkbcees/T/1/+82jEw3z/AUA")
 size_override = Vector2(96, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vvm8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0uok"]
 size = Vector2(6, 6)
 
-[sub_resource type="Animation" id="Animation_r04n3"]
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_0vvm8"]
+[sub_resource type="Animation" id="Animation_tejxb"]
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
@@ -41,10 +25,26 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4tde"]
+[sub_resource type="Animation" id="Animation_snubf"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mpxin"]
 _data = {
-&"Pressed": SubResource("Animation_r04n3"),
-&"Unpressed": SubResource("Animation_0vvm8")
+&"Pressed": SubResource("Animation_snubf"),
+&"Unpressed": SubResource("Animation_tejxb")
 }
 
 [node name="FloorButton" type="Area2D"]
@@ -54,7 +54,7 @@ script = ExtResource("1_r04n3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_vxja4")
+texture = SubResource("PortableCompressedTexture2D_h0uok")
 hframes = 2
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
@@ -74,15 +74,15 @@ metadata/_aseprite_wizard_config_ = {
 "player": "AnimationPlayer",
 "scale": "1.0",
 "slice": "",
-"source": "res://Assets/Button.aseprite",
-"source_uid": 6650996999604404745
+"source": "res://Assets/Button2.aseprite",
+"source_uid": 7421350997351712139
 }
-metadata/_aseprite_wizard_source_file_hash_ = "b2d5b797c4eeefde0053d8acd8038401"
+metadata/_aseprite_wizard_source_file_hash_ = "0532e03ee6aaa6650a803d1e46b21229"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_0vvm8")
+shape = SubResource("RectangleShape2D_h0uok")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_n4tde")
+&"": SubResource("AnimationLibrary_mpxin")
 }

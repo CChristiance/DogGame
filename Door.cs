@@ -3,6 +3,7 @@ using System;
 
 public partial class Door : Area2D
 {
+    [Export] private bool _isOpen = false;
     private AnimationPlayer _animationPlayer;
     private float _radius = 0f;
     private float _raidusMin = 0f;
@@ -15,16 +16,26 @@ public partial class Door : Area2D
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         // AreaEntered += _OnAreaEntered;
         // AreaExited += _OnAreaExited;
+        if (_isOpen)
+        {
+            Open();
+        }
+        else
+        {
+            Close();
+        }
     }
 
     public void Open()
     {
         _animationPlayer.Play("Open");
+        _isOpen = true;
     }
 
     public void Close()
     {
         _animationPlayer.Play("Closed");
+        _isOpen = false;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -40,7 +51,11 @@ public partial class Door : Area2D
     {
         // Screen wipe starting from door;
         // Move to next level
-        _screenWipe = true;
+        if (_isOpen)
+        {
+            _screenWipe = true;
+            // TODO: Transition to either level select or next level
+        }
     }
 
     public override void _Draw()

@@ -7,13 +7,16 @@ public partial class CursorController : Node2D
     public override void _Process(double delta)
     {
         Vector2I coords = dualGridTilemap.LocalToMap(Position);
+
         if (Input.IsActionPressed("left_click"))
         {
-            dualGridTilemap.SetTile(coords, dualGridTilemap.emptyPlaceholderAtlasCoord);
+            dualGridTilemap.SetTile(coords, dualGridTilemap.grassPlaceholderAtlasCoord);
+            GD.Print(coords);
         }
         else if (Input.IsActionPressed("right_click"))
         {
-            dualGridTilemap.SetTile(coords, dualGridTilemap.grassPlaceholderAtlasCoord);
+            dualGridTilemap.SetTile(coords, dualGridTilemap.emptyPlaceholderAtlasCoord);
+            GD.Print(coords);
         }
     }
 

@@ -1,30 +1,60 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public partial class FloorButton : Area2D
+public partial class FloorButton : GroundButton
 {
-    private AnimationPlayer _animationPlayer;
-    [Export] private Door _door;
+    DualGridTilemap dualGridTilemap;
+    [Export] string coordsString;       // Format: (x1,y1) (x2,y2)...
+    List<Vector2I> vector2Is = [];
 
     public override void _Ready()
     {
-        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        AreaEntered += _OnAreaEntered;
-        AreaExited += _OnAreaExited;
+        base._Ready();
+
+        dualGridTilemap = GetOwner().GetChildren().OfType<DualGridTilemap>().FirstOrDefault();
+
+        var split = coordsString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        // Manually parse string into Vector2Is
+        foreach (var coords in split)
+        {
+            var trimmed = coords.Trim('(', ')');    // Remove parentheses
+            var parts = trimmed.Split(',');         // Separate x and y values
+
+            if (parts.Length == 2 &&
+            int.TryParse(parts[0].Trim(), out int x) &&
+            int.TryParse(parts[1].Trim(), out int y))
+            {
+                vector2Is.Add(new Vector2I(x, y));
+                vector2Is.Add(new Vector2I(x, y - 13)); // Also add alt coords
+            }
+            else
+            {
+                GD.PushError($"Invalid vector format: {coords}");
+            }
+        }
     }
 
-    private void _OnAreaEntered(Area2D area)
+    protected override void _OnAreaEntered(Area2D area)
     {
-        _animationPlayer.Play("Pressed");
-        _door.Call("Open");
+        base._OnAreaEntered(area);
+        foreach (Vector2I coords in vector2Is)
+        {
+            dualGridTilemap.SetTile(coords, dualGridTilemap.grassPlaceholderAtlasCoord);
+        }
     }
 
-    private void _OnAreaExited(Area2D area)
+    protected override void _OnAreaExited(Area2D area)
     {
+        base._OnAreaExited(area);
         if (!HasOverlappingAreas())
         {
-            _animationPlayer.Play("Unpressed");
-            _door.Call("Close");
+            foreach (Vector2I coords in vector2Is)
+            {
+                dualGridTilemap.SetTile(coords, dualGridTilemap.emptyPlaceholderAtlasCoord);
+            }
         }
     }
 }

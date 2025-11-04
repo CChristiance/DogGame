@@ -10,11 +10,12 @@ public abstract partial class Player : Area2D
     protected Vector2 _lastPosition;
     private float _t = 0.0f;
     protected Direction direction;
+    protected Push push;
 
     [Export] protected StringName moveLeft, moveRight, moveUp, moveDown;
 
-    private bool _canHorizontal = true;
-    private bool _canVertical = true;
+    protected bool _canHorizontal = true;
+    protected bool _canVertical = true;
 
     protected AnimationPlayer _animationPlayer;
     protected RayCast2D _raycast;
@@ -37,12 +38,15 @@ public abstract partial class Player : Area2D
         gridSize = Global.Instance.gridSize;
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _raycast = GetNode<RayCast2D>("RayCast2D");
+        push = GetNode<Push>("Push");
     }
 
     public override void _PhysicsProcess(double delta)
     {
         float horizontalInput = Input.GetActionStrength(moveRight) - Input.GetActionStrength(moveLeft); // -1 if left, 1 if right, 0 if neither
         float verticalInput = Input.GetActionStrength(moveDown) - Input.GetActionStrength(moveUp); // -1 if up, 1 if down, 0 if neither
+
+        // TODO: Fix bug: When wall tile is added to the tile the player is on and the player walks onto grass, the player can walk back into the wall before the idle animation plays again
 
         // No diagonals in grid-based movement - one direction must be prioritized over the other
         if (_canHorizontal && !(horizontalInput.CompareTo(0) == 0)) // If horizontal input is detected
