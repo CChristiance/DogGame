@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ya1ic3k20w6"]
+
+[ext_resource type="Script" uid="uid://dc1vv76hgsj8g" path="res://DoorButtonHandler.cs" id="1_c42ov"]
+
+[node name="DoorButtonHandler" type="Node2D"]
+script = ExtResource("1_c42ov")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7wuyvsqhew25"]
+
+[ext_resource type="Script" uid="uid://d34lsd0ce6xat" path="res://Components/Push.cs" id="1_hf3ih"]
+
+[node name="Push" type="Node2D"]
+script = ExtResource("1_hf3ih")

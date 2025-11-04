@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c7uv1d0unh4tw"]
+
+[node name="Carryable" type="Node2D"]

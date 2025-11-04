@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://iqbgw3gvaj78"]
+
+[ext_resource type="Script" uid="uid://ch7meys6je5k8" path="res://Level.cs" id="1_86ljf"]
+[ext_resource type="Script" uid="uid://bo8phxbmb0vnb" path="res://DualGridTilemap.cs" id="2_3ywx5"]
+[ext_resource type="TileSet" uid="uid://b8y5jb0kym8js" path="res://TileSet.tres" id="3_ofirr"]
+[ext_resource type="PackedScene" uid="uid://caljvihjjryu5" path="res://player.tscn" id="4_d6u53"]
+[ext_resource type="Script" uid="uid://guc1f0nwlrsp" path="res://WorldMapLayer.cs" id="4_ofirr"]
+[ext_resource type="PackedScene" uid="uid://ckdwmwxha5dmh" path="res://dog.tscn" id="5_sypgb"]
+[ext_resource type="PackedScene" uid="uid://c80id8gwsnems" path="res://door.tscn" id="6_dn5x0"]
+[ext_resource type="Script" uid="uid://fybco2t18ocw" path="res://CursorController.cs" id="8_5qkpu"]
+[ext_resource type="Shader" uid="uid://jq43mk83khyi" path="res://Sepia.gdshader" id="9_dcckh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyeet"]
+shader = ExtResource("9_dcckh")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_86ljf")
+pastPosition = Vector2(0, -208)
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayers" type="Node2D" parent="."]
+script = ExtResource("2_3ywx5")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="worldMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+tile_set = ExtResource("3_ofirr")
+script = ExtResource("4_ofirr")
+
+[node name="displayMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+position = Vector2(-8, -8)
+tile_set = ExtResource("3_ofirr")
+
+[node name="StaticObjects" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Door" parent="Objects" instance=ExtResource("6_dn5x0")]
+
+[node name="Player" parent="Objects" instance=ExtResource("4_d6u53")]
+position = Vector2(-8, -8)
+
+[node name="Dog" parent="Objects" instance=ExtResource("5_sypgb")]
+position = Vector2(8, -8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Cursor" type="Node2D" parent="." node_paths=PackedStringArray("dualGridTilemap")]
+process_mode = 4
+script = ExtResource("8_5qkpu")
+dualGridTilemap = NodePath("../TileMapLayers")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_gyeet")
+layout_direction = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -298.0
+offset_right = -160.0
+offset_bottom = -298.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true

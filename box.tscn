@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=4 uid="uid://cc0as1mwrukjn"]
+
+[ext_resource type="Script" uid="uid://dq6n55n7wvo2e" path="res://FloorBox.cs" id="1_g2tbl"]
+[ext_resource type="PackedScene" uid="uid://cmf5lvbs0irjl" path="res://Components/Causality.tscn" id="2_oq5cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhfb"]
+size = Vector2(14, 14)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_oyhfb"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAB6AAAAUklGRnIAAABXRUJQVlA4TGUAAAAvL8ALECdAIEAZa0BYQk3bBmwsHDquIqqatg2YvB1Ayh9gNf8B+NdJdWuBVSRJrSg0nACCA1bBVa1/U+T0wl9E/yfA/J8uhBDsiAQAcYBD0Q5QkpQRLC4lpJ6teALNZEQoDvjuAQA=")
+size_override = Vector2(48, 48)
+
+[node name="FloorBox" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_g2tbl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oyhfb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = SubResource("PortableCompressedTexture2D_oyhfb")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Box.aseprite",
+"source_uid": 4679951519158019524
+}
+metadata/_aseprite_wizard_source_file_hash_ = "73dc1aee53e5184c6e1e9f3ff9df72b6"
+
+[node name="Causality" parent="." instance=ExtResource("2_oq5cr")]
