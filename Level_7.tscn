@@ -31,3 +31,6 @@ position = Vector2(72, -8)
 
 [node name="Dog" parent="Objects" index="5"]
 position = Vector2(-72, 40)
+
+[node name="LevelName" parent="CanvasLayer" index="2"]
+text = "[center]Level 7: Introduction to Causality[/center]"

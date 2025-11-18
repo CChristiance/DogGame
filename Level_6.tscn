@@ -40,3 +40,6 @@ offset_top = -288.0
 offset_right = -40.0
 offset_bottom = -240.0
 text = "Dog Push: Right CTRL"
+
+[node name="LevelName" parent="CanvasLayer" index="3"]
+text = "[center]Level 6: Dog Tools[/center]"

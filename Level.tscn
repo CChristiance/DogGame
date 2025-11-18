@@ -72,3 +72,19 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="LevelScreen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -168.0
+offset_top = -96.0
+offset_right = 168.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="LevelName" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+offset_left = -168.0
+offset_top = -16.0
+offset_right = 168.0
+offset_bottom = 8.0
+bbcode_enabled = true

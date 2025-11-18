@@ -31,8 +31,11 @@ offset_right = -8.0
 offset_bottom = 16.0
 text = "Carry - Space"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" index="3"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer" index="3"]
 offset_left = -120.0
 offset_top = -64.0
 offset_bottom = -24.0
 text = "Move - WASD"
+
+[node name="LevelName" parent="CanvasLayer" index="5"]
+text = "[center]Level 1: Doggie Door[/center]"

@@ -55,6 +55,16 @@ public partial class Door : Area2D
         {
             _screenWipe = true;
             // TODO: Transition to either level select or next level
+            Timer timer = new();
+            timer.WaitTime = 1.5f;
+            timer.Autostart = true;
+            timer.OneShot = true;
+            timer.Timeout += () =>
+            {
+                GetTree().ChangeSceneToFile("LevelSelect.tscn");
+                timer.QueueFree();
+            };
+            AddChild(timer);
         }
     }
 

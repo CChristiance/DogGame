@@ -18,11 +18,34 @@ public partial class Level : Node2D
     private Node2D _objects;
     private Dog _dog;
 
+    private ColorRect _levelScreen;
+    private RichTextLabel _levelName;
+    // private Timer _fadeTimer;
+    private bool _fade = false;
+
     public override void _Ready()
-    {    
+    {
+        Hide();
         _camera = GetNode<Camera2D>("Camera2D");
         _objects = GetNode<Node2D>("Objects");
         _dog = GetNodeOrNull<Dog>("Objects/Dog");
+
+        _levelScreen = GetNode<ColorRect>("CanvasLayer/LevelScreen");
+        _levelName = GetNode<RichTextLabel>("CanvasLayer/LevelName");
+        _levelScreen.Show();
+        _levelName.Show();
+
+        Timer _fadeTimer = new();
+        _fadeTimer.WaitTime = 0.5f;
+        _fadeTimer.OneShot = true;
+        _fadeTimer.Autostart = true;
+        _fadeTimer.Timeout += () =>
+        {
+            // _fadeTimer.Timeout -= OnFadeTimerTimeout;
+            _fade = true;
+            _fadeTimer.QueueFree();
+        };
+        AddChild(_fadeTimer);
 
         if (time == Time.Present)
         {
@@ -35,9 +58,10 @@ public partial class Level : Node2D
             _camera.Position = pastPosition;
             _objects.Position = pastPosition;
             _dog.turnYoung();
+            _levelScreen.Position = new Vector2(_levelScreen.Position.X, _levelScreen.Position.Y - 208);
+            _levelName.Position = new Vector2(_levelName.Position.X, _levelName.Position.Y - 208);
         }
-
-        GD.Print(time);
+        Show();
     }
 
     public override void _Input(InputEvent @event)
@@ -73,6 +97,25 @@ public partial class Level : Node2D
         else if (@event.IsActionPressed("reset"))
         {
             GetTree().ReloadCurrentScene();
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (_fade && !Mathf.IsEqualApprox(0f, _levelScreen.Modulate.A))
+        {
+            Color currentBoxColor = _levelScreen.Modulate;
+            float newAlpha = Mathf.Lerp(currentBoxColor.A, 0.0f, 0.03f);
+            _levelScreen.Modulate = new Color(currentBoxColor.R, currentBoxColor.G, currentBoxColor.B, newAlpha);
+        }
+
+        if (_fade && !Mathf.IsEqualApprox(0f, _levelName.Modulate.A))
+        {
+            Color currentTextColor = _levelName.Modulate;
+            float newAlpha = Mathf.Lerp(currentTextColor.A, 0.0f, 0.06f);
+            _levelName.Modulate = new Color(currentTextColor.R, currentTextColor.G, currentTextColor.B, newAlpha);
         }
     }
 

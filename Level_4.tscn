@@ -48,3 +48,6 @@ offset_top = -288.0
 offset_right = 136.0
 offset_bottom = -264.0
 text = "Move: Arrows"
+
+[node name="LevelName" parent="CanvasLayer" index="4"]
+text = "[center]Level 4: Just in Time[/center]"
