@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bl3tmow8y1qie"]
+[gd_scene load_steps=9 format=4 uid="uid://bl3tmow8y1qie"]
 
 [ext_resource type="Script" uid="uid://46h6rodbom3u" path="res://FloorButton.cs" id="1_r04n3"]
+[ext_resource type="AudioStream" uid="uid://o1772jjbp8es" path="res://Assets/Sound/SFX/switch_on.wav" id="2_mpxin"]
+[ext_resource type="AudioStream" uid="uid://5k0gv8wwvgs3" path="res://Assets/Sound/SFX/switch_off.wav" id="3_kpj2n"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_h0uok"]
 _data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAACEAAAAUklGRnwAAABXRUJQVlA4THAAAAAvX8ALEC9AFmAygn39MeSvlQuZtE2v2ph/mINpmRciARIW0Oxu8P8t+/wHYF3Vf1k0BUaRbDWicBDvFBYoHGAg+jeTM+xeIvqvoG0bJiawwwL89riIwH4xFDHlQqJfSkbcees/T/1/+82jEw3z/AUA")
@@ -8,22 +10,6 @@ size_override = Vector2(96, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0uok"]
 size = Vector2(6, 6)
-
-[sub_resource type="Animation" id="Animation_tejxb"]
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_snubf"]
 length = 0.1
@@ -41,6 +27,22 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_tejxb"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mpxin"]
 _data = {
 &"Pressed": SubResource("Animation_snubf"),
@@ -48,6 +50,7 @@ _data = {
 }
 
 [node name="FloorButton" type="Area2D"]
+z_index = -1
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_r04n3")
@@ -86,3 +89,11 @@ shape = SubResource("RectangleShape2D_h0uok")
 libraries = {
 &"": SubResource("AnimationLibrary_mpxin")
 }
+
+[node name="SwitchOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mpxin")
+volume_db = -20.0
+
+[node name="SwitchOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kpj2n")
+volume_db = -20.0

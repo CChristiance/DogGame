@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=4 uid="uid://cfvr5uikip4sd"]
+
+[ext_resource type="Script" uid="uid://c5l8y7uc55u6k" path="res://TitleScreen.cs" id="1_tu0on"]
+[ext_resource type="Script" uid="uid://cd4fq4ewqnrb3" path="res://Start.cs" id="2_2k3je"]
+[ext_resource type="AudioStream" uid="uid://cwpi0cifvmfm2" path="res://Assets/Sound/SFX/rollover2.wav" id="3_skwql"]
+[ext_resource type="AudioStream" uid="uid://c6t1gux1d4tk1" path="res://Assets/Sound/SFX/click3.wav" id="4_6iguo"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_tu0on"]
+_data = PackedByteArray("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")
+size_override = Vector2(320, 180)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tu0on")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_tu0on")
+centered = false
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/PawsalityTitle.aseprite",
+"source_uid": 5207905520626941599
+}
+metadata/_aseprite_wizard_source_file_hash_ = "cb0eba6fa6ab86dd937315cecd6858b1"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 140.0
+offset_right = 329.0
+offset_bottom = 180.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Start" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Start"
+script = ExtResource("2_2k3je")
+
+[node name="Credits" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Credits"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_skwql")
+volume_db = -20.0
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6iguo")
+volume_db = -20.0

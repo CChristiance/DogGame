@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://dc1vv76hgsj8g" path="res://DoorButtonHandler.cs" id="1_c42ov"]
 
 [node name="DoorButtonHandler" type="Node2D"]
+z_index = -1
 script = ExtResource("1_c42ov")

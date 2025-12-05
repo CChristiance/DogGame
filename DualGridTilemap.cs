@@ -10,6 +10,7 @@ public partial class DualGridTilemap : Node2D
     TileMapLayer worldMapLayer;
     TileMapLayer displayMapLayer;
     public Vector2I grassPlaceholderAtlasCoord = new(0, 0);
+    public Vector2I brickPlaceholderAtlasCoord = new(0, 1);
     public Vector2I emptyPlaceholderAtlasCoord = new(1, 0);
     readonly Vector2I[] NEIGHBORS = new Vector2I[] { new(0, 0), new(1, 0), new(0, 1), new(1, 1) };
 
@@ -79,6 +80,8 @@ public partial class DualGridTilemap : Node2D
         Vector2I atlasCoord = worldMapLayer.GetCellAtlasCoords(coords);
         if (atlasCoord == grassPlaceholderAtlasCoord)
             return Grass;
+        else if (atlasCoord == brickPlaceholderAtlasCoord)
+            return Brick;
         else
             return None;
     }
@@ -87,5 +90,6 @@ public partial class DualGridTilemap : Node2D
 public enum TileType
 {
     None,
-    Grass
+    Grass,
+    Brick
 }

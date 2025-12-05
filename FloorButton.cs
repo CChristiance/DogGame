@@ -7,7 +7,7 @@ public partial class FloorButton : GroundButton
 {
     DualGridTilemap dualGridTilemap;
     [Export] string coordsString;       // Format: (x1,y1) (x2,y2)...
-    List<Vector2I> vector2Is = [];
+    public List<Vector2I> vector2Is = [];
 
     public override void _Ready()
     {

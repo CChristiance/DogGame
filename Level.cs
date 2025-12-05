@@ -25,7 +25,6 @@ public partial class Level : Node2D
 
     public override void _Ready()
     {
-        Hide();
         _camera = GetNode<Camera2D>("Camera2D");
         _objects = GetNode<Node2D>("Objects");
         _dog = GetNodeOrNull<Dog>("Objects/Dog");

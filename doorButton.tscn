@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bc3mgdiwbmcf6"]
+[gd_scene load_steps=9 format=4 uid="uid://bc3mgdiwbmcf6"]
 
 [ext_resource type="Script" uid="uid://45tmtpy0qgp" path="res://DoorButton.cs" id="1_r04n3"]
+[ext_resource type="AudioStream" uid="uid://o1772jjbp8es" path="res://Assets/Sound/SFX/switch_on.wav" id="2_5vwah"]
+[ext_resource type="AudioStream" uid="uid://5k0gv8wwvgs3" path="res://Assets/Sound/SFX/switch_off.wav" id="3_g88md"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_vxja4"]
 _data = PackedByteArray("AAADAAUAAAABAAAAYAAAADAAAAC2AAAAUklGRq4AAABXRUJQVlA4TKIAAAAvX8ALEC9AFmAygn39MeSvlQuZtE2v2ph/mINpmRciARIW0Oxu8P8t+/wHYF3Vf1k0BbaRbSt5WAHfcqADzT3X238v6J1PSBLRf7VpGzBOW3OH/MhK8zzkmIGEi1YqC6k0VbUxno8olSVcODt10fIOqovgj+bK9j3Nlc0fuzkpJuLPFeZPY45s1J/LErRoqmpD7O+PjAAwisc/Mh4S/s9/IAE=")
@@ -86,3 +88,11 @@ shape = SubResource("RectangleShape2D_0vvm8")
 libraries = {
 &"": SubResource("AnimationLibrary_n4tde")
 }
+
+[node name="SwitchOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5vwah")
+volume_db = -20.0
+
+[node name="SwitchOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g88md")
+volume_db = -20.0

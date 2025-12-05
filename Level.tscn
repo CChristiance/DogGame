@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://iqbgw3gvaj78"]
+[gd_scene load_steps=12 format=3 uid="uid://iqbgw3gvaj78"]
 
 [ext_resource type="Script" uid="uid://ch7meys6je5k8" path="res://Level.cs" id="1_86ljf"]
 [ext_resource type="Script" uid="uid://bo8phxbmb0vnb" path="res://DualGridTilemap.cs" id="2_3ywx5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c80id8gwsnems" path="res://door.tscn" id="6_dn5x0"]
 [ext_resource type="Script" uid="uid://fybco2t18ocw" path="res://CursorController.cs" id="8_5qkpu"]
 [ext_resource type="Shader" uid="uid://jq43mk83khyi" path="res://Sepia.gdshader" id="9_dcckh"]
+[ext_resource type="AudioStream" uid="uid://dxjl6kh1s2pl5" path="res://Assets/Sound/Music/Samba Isobel.mp3" id="10_3ywx5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gyeet"]
 shader = ExtResource("9_dcckh")
@@ -19,6 +20,7 @@ pastPosition = Vector2(0, -208)
 metadata/_edit_lock_ = true
 
 [node name="TileMapLayers" type="Node2D" parent="."]
+z_index = -2
 script = ExtResource("2_3ywx5")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -34,6 +36,7 @@ tile_set = ExtResource("3_ofirr")
 [node name="StaticObjects" type="Node2D" parent="."]
 
 [node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Door" parent="Objects" instance=ExtResource("6_dn5x0")]
@@ -88,3 +91,9 @@ offset_top = -16.0
 offset_right = 168.0
 offset_bottom = 8.0
 bbcode_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_3ywx5")
+volume_db = -25.0
+pitch_scale = 0.75
+parameters/looping = true

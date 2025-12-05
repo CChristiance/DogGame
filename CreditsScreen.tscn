@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=4 uid="uid://bkte2qkulr2s3"]
+
+[ext_resource type="Script" uid="uid://0qo7xqgfc4iy" path="res://CreditsScreen.cs" id="1_7ijao"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_7ijao"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAEAALQAAACwAAAAUklGRqgAAABXRUJQVlA4TJsAAAAvP8EsAA/w2/m3/79zfv7jAU4jSXKkPg3Hf+/ehIdqLEhwkkT032zaNnQN9WBfkeO916AA70kBPpsCdO0XwE3cI+j3kM8RnGPdTNd+AdzEPXJ+n7bmE0dwjnUzXfsFcBP3yPl92ppPHME51s107RfATdwj5/dpaz5xBOdYN9O1XwA3cY+c36et+cQRnGPdTNd+AdzEPXJ+n4/mAwA=")
+size_override = Vector2(320, 180)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7ijao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_7ijao")
+centered = false
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Background.aseprite",
+"source_uid": 7067376446627496623
+}
+metadata/_aseprite_wizard_source_file_hash_ = "84083709db293f303b3eb911ab8a6041"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 168.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 11
+text = "Developer / Designer / Artist / Programmer - BlueTarot
+
+Base Character Sprite - Hana Caraka
+
+GUI SFX - Kenney's UI Audio Pack"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 280.0
+offset_bottom = 168.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 11
+text = "\"Samba Isobel\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/ "

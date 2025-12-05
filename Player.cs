@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Metadata;
 
 public abstract partial class Player : Area2D
@@ -46,10 +48,8 @@ public abstract partial class Player : Area2D
         float horizontalInput = Input.GetActionStrength(moveRight) - Input.GetActionStrength(moveLeft); // -1 if left, 1 if right, 0 if neither
         float verticalInput = Input.GetActionStrength(moveDown) - Input.GetActionStrength(moveUp); // -1 if up, 1 if down, 0 if neither
 
-        // TODO: Fix bug: When wall tile is added to the tile the player is on and the player walks onto grass, the player can walk back into the wall before the idle animation plays again
-
         // No diagonals in grid-based movement - one direction must be prioritized over the other
-        if (_canHorizontal && !(horizontalInput.CompareTo(0) == 0)) // If horizontal input is detected
+        if (_canHorizontal && !(horizontalInput.CompareTo(0) == 0) && _checkFloorButton()) // If horizontal input is detected
         {
             if (horizontalInput < 0) // Facing left
             {
@@ -86,7 +86,7 @@ public abstract partial class Player : Area2D
             }
 
         }
-        else if (_canVertical && !(verticalInput.CompareTo(0) == 0)) // If vertical input is detected
+        else if (_canVertical && !(verticalInput.CompareTo(0) == 0) && _checkFloorButton()) // If vertical input is detected
         {
             if (verticalInput < 0) // Facing Up
             {
@@ -151,8 +151,59 @@ public abstract partial class Player : Area2D
         // If human and dog bonk
         if (HasOverlappingAreas())
         {
-            Position = Position.Lerp(_lastPosition, _t);
-            _desiredPosition = _lastPosition;
+            bool overlappingDog = GetOverlappingAreas().OfType<Dog>().Any();
+            bool overlappingBox = GetOverlappingAreas().OfType<FloorBox>().Any();
+            if (overlappingDog || overlappingBox)
+            {
+                Position = Position.Lerp(_lastPosition, _t);
+                _desiredPosition = _lastPosition;
+            }
         }
+    }
+
+    private bool _checkFloorButton()
+    {
+        // Button check - fixes bug when one player steps off button while other is on ephemeral ground
+        if (HasOverlappingAreas())
+        {
+            bool isOverlappingButton = GetOverlappingAreas().OfType<FloorButton>().Any();
+            if (isOverlappingButton)
+            {
+                FloorButton overlappingButton = GetOverlappingAreas().OfType<FloorButton>().FirstOrDefault();
+                // Check if other player is on ephemeral ground
+                Node2D otherPlayer = null;
+                if (this is Human)
+                {
+                    otherPlayer = GetParent().GetChildren().OfType<Dog>().FirstOrDefault();
+                }
+                else if (this is Dog)
+                {
+                    otherPlayer = GetParent().GetChildren().OfType<Human>().FirstOrDefault();
+                }
+
+                // Check FloorButton Vector2I coords list and compare it to otherPlayer position
+                List<Vector2I> coords = overlappingButton.vector2Is;
+
+                // Flash child red
+                Sprite2D sprite = GetChildren().OfType<Sprite2D>().FirstOrDefault();
+                
+                if (sprite != null && GetChildren().OfType<Timer>().FirstOrDefault() == null)
+                {
+                    Color originalColor = sprite.Modulate;
+                    sprite.Modulate = Colors.Red;
+                    Timer timer = new();
+                    timer.WaitTime = 0.2f;
+                    timer.OneShot = true;
+                    timer.Autostart = true;
+                    timer.Timeout += () =>
+                    {
+                        sprite.Modulate = originalColor;
+                        timer.QueueFree();
+                    };
+                    AddChild(timer);
+                }
+            }
+        }
+        return false;
     }
 }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class LevelSelect : Control
+public partial class TitleScreen : Control
 {
     AudioStreamPlayer _aspHover;
     AudioStreamPlayer _aspClick;
@@ -28,23 +28,21 @@ public partial class LevelSelect : Control
     {
         _aspClick.Play();
 
-        string targetScene = "Level_";
-        targetScene += button.Text + ".tscn";
-        if (ResourceLoader.Exists(targetScene))
+        if (button.Text == "Start" && ResourceLoader.Exists("LevelSelect.tscn"))
         {
-            GetTree().ChangeSceneToFile(targetScene);
+            GetTree().ChangeSceneToFile("LevelSelect.tscn");
         }
-        else
+        else if (button.Text == "Start")
         {
-            GD.Print($"Scene doesn't exist: {targetScene}");
+            GD.Print($"Scene doesn't exist: {"LevelSelect.tscn"}");
         }
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("escape"))
+        else if (button.Text == "Credits" && ResourceLoader.Exists("CreditsScreen.tscn"))
         {
-            GetTree().ChangeSceneToFile("TitleScreen.tscn");
+            GetTree().ChangeSceneToFile("CreditsScreen.tscn");
+        }
+        else if (button.Text == "Credits")
+        {
+            GD.Print($"Scene doesn't exist: {"CreditsScreen.tscn"}");
         }
     }
 }

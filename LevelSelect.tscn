@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://du50g0vatr4qs"]
+[gd_scene load_steps=5 format=4 uid="uid://du50g0vatr4qs"]
 
 [ext_resource type="Script" uid="uid://doeqigkaivti5" path="res://LevelSelect.cs" id="1_sf6f5"]
+[ext_resource type="AudioStream" uid="uid://cwpi0cifvmfm2" path="res://Assets/Sound/SFX/rollover2.wav" id="2_q3t17"]
+[ext_resource type="AudioStream" uid="uid://c6t1gux1d4tk1" path="res://Assets/Sound/SFX/click3.wav" id="3_0bmyu"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_q3t17"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAEAALQAAACwAAAAUklGRqgAAABXRUJQVlA4TJsAAAAvP8EsAA/w2/m3/79zfv7jAU4jSXKkPg3Hf+/ehIdqLEhwkkT032zaNnQN9WBfkeO916AA70kBPpsCdO0XwE3cI+j3kM8RnGPdTNd+AdzEPXJ+n7bmE0dwjnUzXfsFcBP3yPl92ppPHME51s107RfATdwj5/dpaz5xBOdYN9O1XwA3cY+c36et+cQRnGPdTNd+AdzEPXJ+n4/mAwA=")
+size_override = Vector2(320, 180)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,105 +15,158 @@ offset_right = 151.0
 offset_bottom = 136.0
 script = ExtResource("1_sf6f5")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_q3t17")
+centered = false
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Background.aseprite",
+"source_uid": 7067376446627496623
+}
+metadata/_aseprite_wizard_source_file_hash_ = "84083709db293f303b3eb911ab8a6041"
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 2
-offset_left = 84.0
-offset_top = 22.0
-offset_right = 235.0
-offset_bottom = 158.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 160.0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
 layout_mode = 2
 columns = 5
 
 [node name="Button" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "1"
 
 [node name="Button2" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "2"
 
 [node name="Button3" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "3"
 
 [node name="Button4" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "4"
 
 [node name="Button5" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "5"
 
 [node name="Button6" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "6"
 
 [node name="Button7" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "7"
 
 [node name="Button8" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "8"
 
 [node name="Button9" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "9"
 
 [node name="Button10" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "10"
 
 [node name="Button11" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "11"
 
 [node name="Button12" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "12"
 
 [node name="Button13" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "13"
 
 [node name="Button14" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "14"
 
 [node name="Button15" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "15"
 
 [node name="Button16" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "16"
 
 [node name="Button17" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "17"
 
 [node name="Button18" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "18"
 
 [node name="Button19" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "19"
 
 [node name="Button20" type="Button" parent="CenterContainer/GridContainer"]
 visible = false
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "20"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q3t17")
+volume_db = -20.0
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0bmyu")
+volume_db = -20.0
